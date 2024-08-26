@@ -2,14 +2,11 @@ import { Image, Text, TextInput, View } from "react-native";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { Colors } from "@/constants/Colors";
 import React from "react";
+import CaseList from "../../components/caseList";
 
 export default function TabTwoScreen() {
 	const colorScheme = useColorScheme();
 	const [text, onChangeText] = React.useState("");
-	const bgImage =
-		colorScheme === "light"
-			? require("@/assets/images/bg_image_light.png")
-			: require("@/assets/images/bg_image_dark.png");
 	return (
 		<View
 			style={{
@@ -43,35 +40,7 @@ export default function TabTwoScreen() {
 				}
 			/>
 
-			<Image source={bgImage} style={{ marginTop: 60 }} />
-			<Text
-				style={{
-					color: Colors[(colorScheme as "light" | "dark") ?? "light"].Active,
-					textAlign: "center",
-					fontSize: 28,
-					fontStyle: "normal",
-					fontWeight: "700",
-					lineHeight: 38,
-					letterSpacing: -0.28,
-				}}
-			>
-				No Cases Found
-			</Text>
-			<Text
-				style={{
-					color: Colors[(colorScheme as "light" | "dark") ?? "light"].Active,
-					textAlign: "center",
-					fontSize: 16,
-					fontStyle: "normal",
-					fontWeight: "400",
-					lineHeight: 24,
-					letterSpacing: -0.14,
-					width: "75%",
-				}}
-			>
-				No cases to display at the moment. Begin by creating your first case
-				with us.
-			</Text>
+			<CaseList />
 		</View>
 	);
 }
